@@ -17,7 +17,7 @@ Some UITests ensure that everything is running well, from the iPhone Pro Max to 
 Cheers! 
 
 
-![Alt Text](https://giphy.com/gifs/84CRvhy2DJlwA/html5)
+![Alt Text](https://media.giphy.com/media/84CRvhy2DJlwA/giphy.gif)
 
 
 
