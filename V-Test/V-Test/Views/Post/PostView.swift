@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import OWOWKit
 
 /// The view to display a Post.
 struct PostView: View {

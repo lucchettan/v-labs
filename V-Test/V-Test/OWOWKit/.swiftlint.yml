@@ -1,0 +1,5 @@
+disabled_rules: # rule identifiers to exclude from running
+- trailing_whitespace
+- line_length
+- identifier_name
+- private_over_fileprivate # Who decided this rule was a good idea!?

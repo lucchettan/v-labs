@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "OWOWKit",
-        "repositoryURL": "git@github.com:owowagency/OWOWKit.git",
-        "state": {
-          "branch": null,
-          "revision": "ea7762785f6ba548b2ba433e4422613a2965e27a",
-          "version": "3.9.0"
-        }
-      },
-      {
         "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
         "state": {

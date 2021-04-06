@@ -1,0 +1,40 @@
+name: Testing
+
+on: [pull_request]
+
+jobs:
+  test:
+
+    runs-on: [self-hosted, macOS, apple-silicon]
+    
+    strategy:
+      matrix:
+        destination:
+          - name=iPhone 11,OS=latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test
+      run: |
+        arch -arm64 xcodebuild test \
+        -scheme OWOWKit-Package \
+        -destination "${{ matrix.destination }}" \
+        -enableCodeCoverage YES \
+        -parallel-testing-enabled YES \
+        -resultBundlePath "Build/Result/${GITHUB_RUN_ID}-Simulator.xcresult" \
+        | xcpretty && exit ${PIPESTATUS[0]}
+    - name: List simulators
+      if: failure()
+      run: arch -arm64 xcrun simctl list
+    - name: Pack result bundle
+      if: always()
+      run: arch -arm64 zip -r -X Build/${GITHUB_RUN_ID}-Xcresult.zip Build/Result
+    - name: Upload result bundle
+      if: always()
+      uses: actions/upload-artifact@master
+      with:
+        name: ${{ github.run_id }}-Xcresult.zip
+        path: Build/${{ github.run_id }}-Xcresult.zip
+    - name: simctl diagnose
+      if: failure()
+      run: arch -arm64 xcrun simctl diagnose -l
